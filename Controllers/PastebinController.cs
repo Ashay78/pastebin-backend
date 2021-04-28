@@ -21,11 +21,12 @@ namespace Pastebin_backend.Controllers
 
 
         // GET: api/pastebin
+/*
         [HttpGet]
         public async Task<IEnumerable<Pastebin>> GetPastebins()
         {
             return await _context.Pastebins.ToArrayAsync();
-        }
+        }*/
 
         // GET: api/Pastebin/5
         [HttpGet("{id}")]
