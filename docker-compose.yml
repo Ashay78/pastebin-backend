@@ -1,0 +1,35 @@
+version: '3.8'
+services:
+  postgres:
+    container_name: postgres
+    image: postgres:14.1-alpine
+    restart: always
+    environment:
+      POSTGRES_DB: "pastebin"
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "mdp"
+    ports:
+      - '5432:5432'
+    volumes:
+      - pastebin-data:/var/lib/postgresql/data
+    networks:
+      - pastebin-network
+
+  api:
+    container_name: api
+    build: .
+    restart: always
+    environment:
+      PASTEBIN_PASSWORD_DATABASE: "mdp"
+    ports:
+      - '80:80'
+    networks:
+      - pastebin-network
+
+volumes:
+  pastebin-data:
+    driver: local
+
+networks:
+  pastebin-network:
+    driver: bridge

@@ -37,8 +37,9 @@ namespace Pastebin_backend
                 });
             });
 
-            String configurationString = Configuration.GetConnectionString("DefaultConnection");
-            configurationString += "Password=" + Environment.GetEnvironmentVariable("PASTEBIN_PASSWORD_DATABASE") + ";";
+            //String configurationString = Configuration.GetConnectionString("DefaultConnection");
+            //configurationString += "Password=mdp;";
+            String configurationString = "Server=postgres;Port=5432;Database=pastebin;User Id=postgres;Password=mdp;";
             services.AddDbContext<PastebinContext>(opt => opt.UseNpgsql(configurationString));
 
             services.AddControllers();
