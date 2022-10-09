@@ -25,6 +25,10 @@ services:
       - '80:80'
     networks:
       - pastebin-network
+    depends_on:
+      - postgres
+    command: ["./wait-for-it.sh", "db:5432", "--", "python", "app.py"]
+
 
 volumes:
   pastebin-data:
