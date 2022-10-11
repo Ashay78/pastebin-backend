@@ -22,7 +22,7 @@ services:
     environment:
       PASTEBIN_PASSWORD_DATABASE: "mdp"
     ports:
-      - '80:80'
+      - '5000:5000'
     networks:
       - pastebin-network
     depends_on:
