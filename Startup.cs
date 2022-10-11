@@ -42,7 +42,7 @@ namespace Pastebin_backend
                 options.AddPolicy(name: MyAllowSpecificOrigins,
                 builder =>
                 {
-                    builder.WithOrigins("*");
+                    builder.WithOrigins("http://localhost:4200").WithHeaders(HeaderNames.ContentType, "x-custom-header");
                 });
             });
 

@@ -31,6 +31,7 @@ namespace Pastebin_backend
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
+webBuilder.UseUrls("http://api-pastebin:5000");
                 });
     }
 }
