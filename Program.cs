@@ -14,6 +14,7 @@ namespace Pastebin_backend
         {
             var app = CreateHostBuilder(args).Build();
 
+            // Deploy migration
             using (var scope = app.Services.CreateScope())
             {
                 var services = scope.ServiceProvider;
@@ -31,7 +32,7 @@ namespace Pastebin_backend
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
-webBuilder.UseUrls("http://api-pastebin:5000");
+                    webBuilder.UseUrls("http://api-pastebin:5000");
                 });
     }
 }

@@ -27,28 +27,17 @@ namespace Pastebin_backend
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddCors(options =>
-            //{
-            //    options.AddPolicy(name: MyAllowSpecificOrigins,
-            //    builder =>
-            //    {
-            //        builder.WithOrigins("http://localhost:4200")
-            //        .WithHeaders(HeaderNames.ContentType, "x-custom-header");
-            //    });
-            //});
-
             services.AddCors(options =>
             {
                 options.AddPolicy(name: MyAllowSpecificOrigins,
                 builder =>
                 {
-                    builder.WithOrigins("http://localhost:4200").WithHeaders(HeaderNames.ContentType, "x-custom-header");
+                    builder.WithOrigins("http://localhost:4200")
+                    .WithHeaders(HeaderNames.ContentType, "x-custom-header");
                 });
             });
 
-            //String configurationString = Configuration.GetConnectionString("DefaultConnection");
-            //configurationString += "Password=mdp;";
-            String configurationString = "Server=postgres;Port=5432;Database=pastebin;User Id=postgres;Password=mdp;";
+            String configurationString = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<PastebinContext>(opt => opt.UseNpgsql(configurationString));
 
             services.AddControllers();
